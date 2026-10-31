@@ -230,20 +230,24 @@
 
       <v-divider />
 
-      <!-- Footer Action -->
-      <v-card-actions class="pa-6 bg-surface-light d-flex justify-space-between align-center">
-        <span class="text-caption text-medium-emphasis">
-          ID Konfigurasi: <strong>{{ rocket.id }}</strong>
-        </span>
-        <v-btn
-          color="primary"
-          variant="flat"
-          class="font-weight-bold rounded-lg px-6 text-black"
-          prepend-icon="mdi-arrow-left"
-          @click="goBack"
-        >
-          Kembali ke Daftar
-        </v-btn>
+      <!-- Technical Footer Metadata (Tanpa Tombol Duplikat) -->
+      <v-card-actions class="pa-4 pa-sm-6 bg-surface-light d-flex flex-wrap justify-space-between align-center ga-2">
+        <div class="d-flex align-center ga-2 text-caption text-medium-emphasis">
+          <v-icon
+            icon="mdi-pound"
+            size="16"
+            color="primary"
+          />
+          <span>ID Konfigurasi Sistem: <strong>{{ rocket.id }}</strong></span>
+        </div>
+        <div class="d-flex align-center ga-2 text-caption text-medium-emphasis">
+          <v-icon
+            icon="mdi-cloud-check"
+            size="16"
+            color="primary"
+          />
+          <span>Sumber Resmi Launch Library 2 API v2.2.0</span>
+        </div>
       </v-card-actions>
     </v-card>
   </v-container>

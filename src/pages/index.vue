@@ -51,17 +51,14 @@
                 SpaceX Rocket Fleet
               </h1>
 
-              <p class="text-body-1 text-grey-lighten-2 max-w-prose mb-0 text-shadow-sm">
+              <p class="text-body-1 text-grey-lighten-2 max-w-prose mb-5 text-shadow-sm">
                 Katalog dan spesifikasi komprehensif armada peluncur antariksa SpaceX, dari peluncur perintis Falcon 1 hingga sistem peluncuran antariksa masa depan Starship.
               </p>
-            </v-col>
 
-            <v-col
-              cols="12"
-              md="4"
-              class="text-md-right mt-4 mt-md-0"
-            >
-              <AddRocketDialog @created="onRocketAdded" />
+              <!-- Tombol CTA diletakkan rapi di bawah deskripsi teks (Persis seperti referensi mychess.events) -->
+              <div>
+                <AddRocketDialog @created="onRocketAdded" />
+              </div>
             </v-col>
           </v-row>
         </div>
