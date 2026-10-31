@@ -1,66 +1,74 @@
 <template>
   <v-container class="py-6 py-md-10 max-width-xl">
-    <!-- 1. HERO SECTION (SINEMATIK & MODERN) -->
+    <!-- 1. HERO SECTION (SINEMATIK DENGAN BACKGROUND GAMBAR & DARK VIGNETTE) -->
     <v-card
-      class="hero-banner rounded-2xl mb-6 overflow-hidden elevation-3"
+      class="hero-banner rounded-2xl mb-6 overflow-hidden elevation-4"
       border
     >
-      <div class="hero-overlay pa-6 pa-md-10">
-        <v-row align="center">
-          <v-col
-            cols="12"
-            md="8"
-          >
-            <div class="d-flex align-center flex-wrap ga-2 mb-3">
-              <v-chip
-                color="primary"
-                variant="flat"
-                size="small"
-                class="font-weight-bold text-uppercase"
-              >
-                <v-icon
-                  start
-                  icon="mdi-bank"
-                  size="14"
-                />
-                Allo Bank Assessment
-              </v-chip>
-              <v-chip
-                color="white"
-                variant="outlined"
-                size="small"
-                class="font-weight-medium"
-              >
-                <v-icon
-                  start
-                  icon="mdi-api"
-                  size="14"
-                />
-                LL2 API v2.2.0 Detailed
-              </v-chip>
-            </div>
+      <v-img
+        src="/hero-bg.jpg"
+        cover
+        min-height="300"
+        class="hero-image"
+        alt="SpaceX Launch Complex"
+      >
+        <div class="hero-overlay pa-6 pa-md-10 fill-height d-flex flex-column justify-center">
+          <v-row align="center">
+            <v-col
+              cols="12"
+              md="8"
+            >
+              <div class="d-flex align-center flex-wrap ga-2 mb-3">
+                <v-chip
+                  color="primary"
+                  variant="flat"
+                  size="small"
+                  class="font-weight-bold text-uppercase text-black"
+                >
+                  <v-icon
+                    start
+                    icon="mdi-bank"
+                    size="14"
+                  />
+                  Allo Bank Assessment
+                </v-chip>
+                <v-chip
+                  color="white"
+                  variant="outlined"
+                  size="small"
+                  class="font-weight-medium bg-black-opacity-50"
+                >
+                  <v-icon
+                    start
+                    icon="mdi-api"
+                    size="14"
+                  />
+                  LL2 API v2.2.0 Detailed
+                </v-chip>
+              </div>
 
-            <h1 class="text-h4 text-sm-h3 text-md-h2 font-weight-black text-white tracking-tight mb-3">
-              SpaceX Rocket Fleet
-            </h1>
+              <h1 class="text-h4 text-sm-h3 text-md-h2 font-weight-black text-white tracking-tight mb-3 text-shadow">
+                SpaceX Rocket Fleet
+              </h1>
 
-            <p class="text-body-1 text-grey-lighten-2 max-w-prose mb-0">
-              Katalog dan spesifikasi komprehensif armada peluncur antariksa SpaceX, dari peluncur perintis Falcon 1 hingga sistem peluncuran antariksa masa depan Starship.
-            </p>
-          </v-col>
+              <p class="text-body-1 text-grey-lighten-2 max-w-prose mb-0 text-shadow-sm">
+                Katalog dan spesifikasi komprehensif armada peluncur antariksa SpaceX, dari peluncur perintis Falcon 1 hingga sistem peluncuran antariksa masa depan Starship.
+              </p>
+            </v-col>
 
-          <v-col
-            cols="12"
-            md="4"
-            class="text-md-right mt-4 mt-md-0"
-          >
-            <AddRocketDialog @created="onRocketAdded" />
-          </v-col>
-        </v-row>
-      </div>
+            <v-col
+              cols="12"
+              md="4"
+              class="text-md-right mt-4 mt-md-0"
+            >
+              <AddRocketDialog @created="onRocketAdded" />
+            </v-col>
+          </v-row>
+        </div>
+      </v-img>
     </v-card>
 
-    <!-- 2. FLOATING FEATURE & METRICS BAR (INSPIRASI MODERN TECH PORTAL) -->
+    <!-- 2. FLOATING FEATURE & METRICS BAR (AKSEN GOLD/AMBER HARMONIS) -->
     <v-card
       class="mb-8 rounded-xl elevation-2 border bg-surface"
     >
@@ -94,7 +102,7 @@
           <div class="d-flex align-center justify-center ga-2 mb-1">
             <v-icon
               icon="mdi-check-decagram"
-              color="info"
+              color="primary"
               size="20"
             />
             <span class="text-h6 font-weight-bold">{{ rocketStore.spacexCount }}</span>
@@ -112,7 +120,7 @@
           <div class="d-flex align-center justify-center ga-2 mb-1">
             <v-icon
               icon="mdi-star"
-              color="amber-darken-2"
+              color="primary"
               size="20"
             />
             <span class="text-h6 font-weight-bold">{{ rocketStore.customCount }}</span>
@@ -130,7 +138,7 @@
           <div class="d-flex align-center justify-center ga-2 mb-1">
             <v-icon
               icon="mdi-database-check"
-              color="success"
+              color="primary"
               size="20"
             />
             <span class="text-h6 font-weight-bold">Tersinkron</span>
@@ -292,16 +300,20 @@
     <!-- Snackbar Notification for Added Rocket -->
     <v-snackbar
       v-model="showSuccessSnackbar"
-      color="success"
+      color="primary"
       location="bottom right"
       timeout="3500"
       rounded="pill"
+      class="text-black"
     >
       <v-icon
         start
         icon="mdi-check-circle"
+        color="black"
       />
-      Roket baru berhasil ditambahkan ke katalog aplikasi!
+      <span class="font-weight-bold text-black">
+        Roket baru berhasil ditambahkan ke katalog aplikasi!
+      </span>
     </v-snackbar>
   </v-container>
 </template>
@@ -362,13 +374,25 @@ function resetFilters() {
 }
 
 .hero-banner {
-  background: linear-gradient(135deg, #091422 0%, #102438 50%, #0d1b2a 100%);
   position: relative;
-  border-color: rgba(255, 255, 255, 0.08) !important;
+  border-color: rgba(229, 169, 60, 0.25) !important;
 }
 
 .hero-overlay {
-  background: radial-gradient(circle at 80% 20%, rgba(25, 118, 210, 0.15) 0%, transparent 60%);
+  background: linear-gradient(90deg, rgba(11, 14, 20, 0.94) 0%, rgba(11, 14, 20, 0.85) 50%, rgba(11, 14, 20, 0.6) 100%);
+}
+
+.text-shadow {
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+}
+
+.text-shadow-sm {
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+.bg-black-opacity-50 {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  backdrop-filter: blur(4px);
 }
 
 .stat-col {

@@ -135,7 +135,7 @@
                 >
                   <v-icon
                     icon="mdi-currency-usd"
-                    color="white"
+                    color="black"
                     size="20"
                   />
                 </v-avatar>
@@ -156,17 +156,17 @@
           >
             <v-card
               variant="tonal"
-              color="info"
+              color="primary"
               class="pa-4 rounded-xl h-100"
             >
               <div class="d-flex align-center ga-3 mb-2">
                 <v-avatar
-                  color="info"
+                  color="primary"
                   size="36"
                 >
                   <v-icon
                     icon="mdi-calendar-start"
-                    color="white"
+                    color="black"
                     size="20"
                   />
                 </v-avatar>
@@ -187,17 +187,17 @@
           >
             <v-card
               variant="tonal"
-              color="teal"
+              color="primary"
               class="pa-4 rounded-xl h-100"
             >
               <div class="d-flex align-center ga-3 mb-2">
                 <v-avatar
-                  color="teal"
+                  color="primary"
                   size="36"
                 >
                   <v-icon
                     icon="mdi-earth"
-                    color="white"
+                    color="black"
                     size="20"
                   />
                 </v-avatar>
@@ -238,7 +238,7 @@
         <v-btn
           color="primary"
           variant="flat"
-          class="font-weight-bold rounded-lg px-6"
+          class="font-weight-bold rounded-lg px-6 text-black"
           prepend-icon="mdi-arrow-left"
           @click="goBack"
         >

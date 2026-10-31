@@ -10,7 +10,7 @@
         color="primary"
         prepend-icon="mdi-plus"
         variant="flat"
-        class="font-weight-bold rounded-lg px-4"
+        class="font-weight-bold rounded-lg px-4 text-black"
         elevation="2"
       >
         Tambah Roket
@@ -18,11 +18,11 @@
     </template>
 
     <v-card class="rounded-xl overflow-hidden elevation-10">
-      <v-card-item class="bg-primary text-white py-4 px-6">
+      <v-card-item class="bg-primary text-black py-4 px-6">
         <div class="d-flex align-center justify-space-between w-100">
           <div class="d-flex align-center ga-3">
             <v-avatar
-              color="white"
+              color="black"
               size="36"
             >
               <v-icon
@@ -32,10 +32,10 @@
               />
             </v-avatar>
             <div>
-              <v-card-title class="text-h6 font-weight-bold text-white pa-0">
+              <v-card-title class="text-h6 font-weight-bold text-black pa-0">
                 Tambah Roket Baru
               </v-card-title>
-              <span class="text-caption text-white-opacity-80">
+              <span class="text-caption text-black font-weight-medium">
                 Data akan tersimpan secara lokal pada sesi aplikasi ini
               </span>
             </div>
@@ -43,7 +43,7 @@
           <v-btn
             icon="mdi-close"
             variant="text"
-            color="white"
+            color="black"
             density="comfortable"
             @click="closeDialog"
           />
@@ -162,7 +162,7 @@
           <v-btn
             color="primary"
             variant="flat"
-            class="px-6 font-weight-bold rounded-lg"
+            class="px-6 font-weight-bold rounded-lg text-black"
             type="submit"
             :disabled="!isFormValid"
           >

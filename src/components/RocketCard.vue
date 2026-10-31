@@ -59,9 +59,9 @@
         <v-chip
           v-if="rocket.isCustom"
           size="small"
-          color="amber-darken-2"
+          color="primary"
           variant="flat"
-          class="font-weight-bold elevation-3"
+          class="font-weight-bold elevation-3 text-black"
         >
           <v-icon
             start
@@ -73,7 +73,7 @@
         <v-chip
           v-else
           size="small"
-          color="primary"
+          color="surface"
           variant="flat"
           class="font-weight-bold elevation-3"
         >
@@ -81,6 +81,7 @@
             start
             icon="mdi-rocket-launch"
             size="13"
+            color="primary"
           />
           SpaceX
         </v-chip>
@@ -111,7 +112,7 @@
         <v-icon
           icon="mdi-currency-usd"
           size="14"
-          color="success"
+          color="primary"
         />
         <span>{{ formattedCost }}</span>
       </div>
@@ -198,7 +199,7 @@ function onImageError() {
 
 .rocket-card:hover {
   transform: translateY(-4px);
-  border-color: rgba(25, 118, 210, 0.4);
+  border-color: rgba(229, 169, 60, 0.45);
 }
 
 .rocket-image {

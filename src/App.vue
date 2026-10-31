@@ -19,7 +19,7 @@
           >
             <v-icon
               icon="mdi-rocket-launch"
-              color="white"
+              color="black"
               size="20"
             />
           </v-avatar>
