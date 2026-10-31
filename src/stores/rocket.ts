@@ -11,6 +11,7 @@ export const useRocketStore = defineStore('rocket', {
     customRockets: [] as Rocket[],
     selectedRocket: null as Rocket | null,
     searchQuery: '',
+    categoryFilter: 'all' as 'all' | 'spacex' | 'custom',
     isLoading: false,
     isDetailLoading: false,
     error: null as string | null,
@@ -25,7 +26,14 @@ export const useRocketStore = defineStore('rocket', {
 
     filteredRockets: (state): Rocket[] => {
       const query = state.searchQuery.trim().toLowerCase()
-      const list = [...state.customRockets, ...state.rockets]
+      let list = [...state.customRockets, ...state.rockets]
+
+      if (state.categoryFilter === 'spacex') {
+        list = list.filter((r) => !r.isCustom)
+      } else if (state.categoryFilter === 'custom') {
+        list = list.filter((r) => r.isCustom)
+      }
+
       if (!query) return list
 
       return list.filter((r) => {
@@ -35,6 +43,9 @@ export const useRocketStore = defineStore('rocket', {
         return fullNameMatch || nameMatch || descMatch
       })
     },
+
+    spacexCount: (state): number => state.rockets.length,
+    customCount: (state): number => state.customRockets.length,
 
     totalCount(): number {
       return this.allRockets.length
@@ -164,6 +175,10 @@ export const useRocketStore = defineStore('rocket', {
 
     setSearchQuery(query: string) {
       this.searchQuery = query
+    },
+
+    setCategoryFilter(category: 'all' | 'spacex' | 'custom') {
+      this.categoryFilter = category
     },
 
     clearError() {

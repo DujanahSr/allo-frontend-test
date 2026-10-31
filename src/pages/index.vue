@@ -1,43 +1,150 @@
 <template>
   <v-container class="py-6 py-md-10 max-width-xl">
-    <!-- Header Hero Section -->
-    <v-row class="mb-6 align-center">
-      <v-col
-        cols="12"
-        md="8"
-      >
-        <div class="d-flex align-center ga-3 mb-2">
-          <v-chip
-            color="primary"
-            variant="flat"
-            size="small"
-            class="font-weight-bold text-uppercase"
-          >
-            Allo Bank Assessment
-          </v-chip>
-          <span class="text-caption text-medium-emphasis">SpaceX Catalog API v2.2.0</span>
-        </div>
-        <h1 class="text-h4 text-md-h3 font-weight-bold text-high-emphasis tracking-tight">
-          SpaceX Rocket Fleet
-        </h1>
-        <p class="text-body-1 text-medium-emphasis mt-2 mb-0">
-          Eksplorasi armada roket SpaceX dari peluncur Falcon 1 hingga Starship generasi berikutnya.
-        </p>
-      </v-col>
-
-      <v-col
-        cols="12"
-        md="4"
-        class="text-md-right"
-      >
-        <AddRocketDialog @created="onRocketAdded" />
-      </v-col>
-    </v-row>
-
-    <!-- Search & Filter Controls -->
+    <!-- 1. HERO SECTION (SINEMATIK & MODERN) -->
     <v-card
-      class="pa-4 mb-8 rounded-xl elevation-1 border"
-      color="surface"
+      class="hero-banner rounded-2xl mb-6 overflow-hidden elevation-3"
+      border
+    >
+      <div class="hero-overlay pa-6 pa-md-10">
+        <v-row align="center">
+          <v-col
+            cols="12"
+            md="8"
+          >
+            <div class="d-flex align-center flex-wrap ga-2 mb-3">
+              <v-chip
+                color="primary"
+                variant="flat"
+                size="small"
+                class="font-weight-bold text-uppercase"
+              >
+                <v-icon
+                  start
+                  icon="mdi-bank"
+                  size="14"
+                />
+                Allo Bank Assessment
+              </v-chip>
+              <v-chip
+                color="white"
+                variant="outlined"
+                size="small"
+                class="font-weight-medium"
+              >
+                <v-icon
+                  start
+                  icon="mdi-api"
+                  size="14"
+                />
+                LL2 API v2.2.0 Detailed
+              </v-chip>
+            </div>
+
+            <h1 class="text-h4 text-sm-h3 text-md-h2 font-weight-black text-white tracking-tight mb-3">
+              SpaceX Rocket Fleet
+            </h1>
+
+            <p class="text-body-1 text-grey-lighten-2 max-w-prose mb-0">
+              Katalog dan spesifikasi komprehensif armada peluncur antariksa SpaceX, dari peluncur perintis Falcon 1 hingga sistem peluncuran antariksa masa depan Starship.
+            </p>
+          </v-col>
+
+          <v-col
+            cols="12"
+            md="4"
+            class="text-md-right mt-4 mt-md-0"
+          >
+            <AddRocketDialog @created="onRocketAdded" />
+          </v-col>
+        </v-row>
+      </div>
+    </v-card>
+
+    <!-- 2. FLOATING FEATURE & METRICS BAR (INSPIRASI MODERN TECH PORTAL) -->
+    <v-card
+      class="mb-8 rounded-xl elevation-2 border bg-surface"
+    >
+      <v-row
+        no-gutters
+        class="divide-cols"
+      >
+        <v-col
+          cols="6"
+          sm="3"
+          class="pa-4 text-center stat-col"
+        >
+          <div class="d-flex align-center justify-center ga-2 mb-1">
+            <v-icon
+              icon="mdi-rocket-launch"
+              color="primary"
+              size="20"
+            />
+            <span class="text-h6 font-weight-bold">{{ rocketStore.totalCount }}</span>
+          </div>
+          <div class="text-caption text-medium-emphasis font-weight-medium">
+            Total Armada
+          </div>
+        </v-col>
+
+        <v-col
+          cols="6"
+          sm="3"
+          class="pa-4 text-center stat-col"
+        >
+          <div class="d-flex align-center justify-center ga-2 mb-1">
+            <v-icon
+              icon="mdi-check-decagram"
+              color="info"
+              size="20"
+            />
+            <span class="text-h6 font-weight-bold">{{ rocketStore.spacexCount }}</span>
+          </div>
+          <div class="text-caption text-medium-emphasis font-weight-medium">
+            SpaceX Resmi
+          </div>
+        </v-col>
+
+        <v-col
+          cols="6"
+          sm="3"
+          class="pa-4 text-center stat-col"
+        >
+          <div class="d-flex align-center justify-center ga-2 mb-1">
+            <v-icon
+              icon="mdi-star"
+              color="amber-darken-2"
+              size="20"
+            />
+            <span class="text-h6 font-weight-bold">{{ rocketStore.customCount }}</span>
+          </div>
+          <div class="text-caption text-medium-emphasis font-weight-medium">
+            Roket Kustom
+          </div>
+        </v-col>
+
+        <v-col
+          cols="6"
+          sm="3"
+          class="pa-4 text-center stat-col"
+        >
+          <div class="d-flex align-center justify-center ga-2 mb-1">
+            <v-icon
+              icon="mdi-database-check"
+              color="success"
+              size="20"
+            />
+            <span class="text-h6 font-weight-bold">Tersinkron</span>
+          </div>
+          <div class="text-caption text-medium-emphasis font-weight-medium">
+            Penyimpanan Lokal
+          </div>
+        </v-col>
+      </v-row>
+    </v-card>
+
+    <!-- 3. SEARCH & QUICK FILTER SECTION -->
+    <v-card
+      class="pa-4 pa-sm-5 mb-8 rounded-xl elevation-1 border bg-surface"
     >
       <v-row
         align="center"
@@ -45,8 +152,7 @@
       >
         <v-col
           cols="12"
-          sm="8"
-          md="9"
+          md="6"
         >
           <v-text-field
             v-model="searchQuery"
@@ -64,22 +170,55 @@
 
         <v-col
           cols="12"
-          sm="4"
-          md="3"
-          class="text-sm-right mt-2 mt-sm-0"
+          md="6"
+          class="d-flex align-center justify-start justify-md-end flex-wrap ga-2 mt-2 mt-md-0"
         >
+          <!-- Quick Category Filter Chips -->
+          <v-btn-toggle
+            v-model="activeCategory"
+            mandatory
+            density="comfortable"
+            variant="outlined"
+            divided
+            rounded="lg"
+            color="primary"
+          >
+            <v-btn
+              value="all"
+              size="small"
+              class="font-weight-medium"
+            >
+              Semua ({{ rocketStore.totalCount }})
+            </v-btn>
+            <v-btn
+              value="spacex"
+              size="small"
+              class="font-weight-medium"
+            >
+              SpaceX ({{ rocketStore.spacexCount }})
+            </v-btn>
+            <v-btn
+              value="custom"
+              size="small"
+              class="font-weight-medium"
+            >
+              Kustom ({{ rocketStore.customCount }})
+            </v-btn>
+          </v-btn-toggle>
+
           <v-chip
             color="primary"
             variant="tonal"
+            size="small"
             class="font-weight-bold"
           >
-            {{ rocketStore.filteredRockets.length }} dari {{ rocketStore.totalCount }} Roket
+            {{ rocketStore.filteredRockets.length }} Roket
           </v-chip>
         </v-col>
       </v-row>
     </v-card>
 
-    <!-- 1. LOADING STATE -->
+    <!-- 4. UI STATE: LOADING SKELETON -->
     <v-row v-if="rocketStore.isLoading">
       <v-col
         v-for="n in 6"
@@ -92,7 +231,7 @@
       </v-col>
     </v-row>
 
-    <!-- 2. ERROR / FAIL STATE (WITH RETRY BUTTON) -->
+    <!-- 5. UI STATE: ERROR WITH RETRY BUTTON -->
     <ErrorState
       v-else-if="rocketStore.error"
       title="Gagal Memuat Katalog Roket"
@@ -101,11 +240,10 @@
       @retry="rocketStore.fetchRockets(true)"
     />
 
-    <!-- 3. SUCCESS STATE: EMPTY SEARCH RESULT -->
+    <!-- 6. UI STATE: EMPTY SEARCH / FILTER RESULT -->
     <v-card
       v-else-if="rocketStore.filteredRockets.length === 0"
-      class="pa-12 text-center rounded-xl elevation-1 border my-6"
-      color="surface"
+      class="pa-10 text-center rounded-xl elevation-1 border my-6 bg-surface"
     >
       <v-avatar
         color="primary-lighten-5"
@@ -121,19 +259,20 @@
         Tidak Ada Roket yang Cocok
       </h3>
       <p class="text-body-2 text-medium-emphasis mb-4">
-        Tidak ditemukan roket dengan kata kunci "<strong>{{ searchQuery }}</strong>". Coba kata kunci lain.
+        Tidak ditemukan roket untuk kriteria pencarian saat ini. Silakan atur ulang kata kunci atau filter.
       </p>
       <v-btn
         color="primary"
         variant="tonal"
-        prepend-icon="mdi-close-circle-outline"
-        @click="searchQuery = ''"
+        prepend-icon="mdi-refresh"
+        class="font-weight-medium rounded-lg"
+        @click="resetFilters"
       >
-        Hapus Filter Pencarian
+        Reset Filter
       </v-btn>
     </v-card>
 
-    <!-- 4. SUCCESS STATE: ROCKETS GRID -->
+    <!-- 7. UI STATE: SUCCESS ROCKETS CATALOG GRID -->
     <v-row v-else>
       <v-col
         v-for="rocket in rocketStore.filteredRockets"
@@ -162,7 +301,7 @@
         start
         icon="mdi-check-circle"
       />
-      Roket baru berhasil ditambahkan ke katalog!
+      Roket baru berhasil ditambahkan ke katalog aplikasi!
     </v-snackbar>
   </v-container>
 </template>
@@ -185,6 +324,11 @@ const searchQuery = computed({
   set: (val: string) => rocketStore.setSearchQuery(val || ''),
 })
 
+const activeCategory = computed({
+  get: () => rocketStore.categoryFilter,
+  set: (val: 'all' | 'spacex' | 'custom') => rocketStore.setCategoryFilter(val || 'all'),
+})
+
 onMounted(() => {
   rocketStore.initCustomRockets()
   rocketStore.fetchRockets()
@@ -197,6 +341,11 @@ function navigateToDetail(id: string | number) {
 function onRocketAdded() {
   showSuccessSnackbar.value = true
 }
+
+function resetFilters() {
+  rocketStore.setSearchQuery('')
+  rocketStore.setCategoryFilter('all')
+}
 </script>
 
 <style scoped>
@@ -204,7 +353,35 @@ function onRocketAdded() {
   max-width: 1240px;
 }
 
+.max-w-prose {
+  max-width: 650px;
+}
+
 .tracking-tight {
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
+}
+
+.hero-banner {
+  background: linear-gradient(135deg, #091422 0%, #102438 50%, #0d1b2a 100%);
+  position: relative;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+.hero-overlay {
+  background: radial-gradient(circle at 80% 20%, rgba(25, 118, 210, 0.15) 0%, transparent 60%);
+}
+
+.stat-col {
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.stat-col:last-child {
+  border-right: none;
+}
+
+@media (max-width: 600px) {
+  .stat-col:nth-child(2) {
+    border-right: none;
+  }
 }
 </style>
